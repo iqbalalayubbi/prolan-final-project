@@ -1,0 +1,62 @@
+[
+    {
+        "min_umur": 15,
+        "max_umur": 19,
+        "bekerja": 5142340,
+        "pengangguran": 1954126
+    },
+    {
+        "min_umur": 20,
+        "max_umur": 24,
+        "bekerja": 10997685,
+        "pengangguran": 2192794
+    },
+    {
+        "min_umur": 25,
+        "max_umur": 29,
+        "bekerja": 13005071,
+        "pengangguran": 942386
+    },
+    {
+        "min_umur": 30,
+        "max_umur": 34,
+        "bekerja": 15048964,
+        "pengangguran": 530219
+    },
+    {
+        "min_umur": 35,
+        "max_umur": 39,
+        "bekerja": 17202398,
+        "pengangguran": 431185
+    },
+    {
+        "min_umur": 40,
+        "max_umur": 44,
+        "bekerja": 14276271,
+        "pengangguran": 270261
+    },
+    {
+        "min_umur": 45,
+        "max_umur": 49,
+        "bekerja": 13660154,
+        "pengangguran": 209213
+    },
+    {
+        "min_umur": 50,
+        "max_umur": 54,
+        "bekerja": 11394107,
+        "pengangguran": 178588
+    },
+    {
+        "min_umur": 55,
+        "max_umur": 59,
+        "bekerja": 8814593,
+        "pengangguran": 154821
+    },
+    {
+        "min_umur": 60,
+        "max_umur": 99,
+        "bekerja": 11480840,
+        "pengangguran": 176730
+    }
+]
