@@ -50,24 +50,43 @@ void loadData(){
     o << setw(4) << dataArray << endl;
 }
 
-int main() {
+void showDataByAge(){
+    int age;
     ifstream f("allData.json");
     json allData = json::parse(f);
+    cout << "Masukkan umur anda : ";
+    cin >> age;
 
-    // cout << min_umur+max_umur << endl;
+    if (age < 15) cout << "umur anda tidak masuk ke dalam AK";
+    else{
+        for (int i=0; i<10; i++){
+            int min_age = allData[i]["min_umur"];
+            int max_age = allData[i]["max_umur"];
 
-    // struct AngkatanKerja Data[2] = {100,200};
+            if (age >= min_age && age <= max_age && age < 60){
+                cout << "Golongan Umur : " << allData[i]["min_umur"] << " - " << allData[i]["max_umur"] << endl;
+                cout << "Bekerja : " << allData[i]["bekerja"] << endl;
+                cout << "Pengangguran : " << allData[i]["pengangguran"] << endl;
+                cout << "Angkatan Kerja : " << allData[i]["angkatan_kerja"] << endl;
+                cout << "Bekerja per AK : " << allData[i]["bekerja_ak"] << endl;
+            }
 
-    // write json file
-    // json data = json::array({ {"currency", "USD"}, {"value", 42.99} });
-    // json data = json::object({Data});
-    // j["bekerja"] = 5142340;
-    // j["pengangguran"] = 1954126;
-    // j["angkatan_kerja"] = 7096466;
-    // ofstream o("pretty.json");
-    // o << setw(4) << data << endl;
+            if (age > 60){
+                cout << "Golongan Umur : " << "60 +" << endl;
+                cout << "Bekerja : " << allData[i]["bekerja"] << endl;
+                cout << "Pengangguran : " << allData[i]["pengangguran"] << endl;
+                cout << "Angkatan Kerja : " << allData[i]["angkatan_kerja"] << endl;
+                cout << "Bekerja per AK : " << allData[i]["bekerja_ak"] << endl;
+            }
+        }
+    }
+}
 
-    // cout << Data[0].bekerja << endl;
+int main() {
+    showDataByAge();
+// c.	Tampilkan golongan umur yang memiliki persentase (bekerja per AK) > dari x
+// d.	Urutkan data berdasarkan presentase AK
+// e.	Tampilkan data berdasarkan kelompok range usia Anda (done)
 }
 
 
