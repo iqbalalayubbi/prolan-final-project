@@ -19,6 +19,7 @@ struct AngkatanKerja{
 };
 
 const int TOTAL_DATA = 10;
+int choice = 0;
 
 void createTable(json headers_column, json body_column, int total, bool multi_arr=true){
     TextTable t( '-', '|', '+' );
@@ -190,7 +191,77 @@ void showAgeByAK(){
     createTable(header, dataFound, dataFound.size(), false);
 }
 
+void showAllData(){
+    ifstream f("allData.json");
+    json jsonData = json::parse(f);
+    json arrData = json::array();
+
+    json header = json::array({"Golongan Umur", "Bekerja", "Pengangguran", "Angkatan Kerja (AK)", "Bekerja per AK"});
+
+    for(int i=0; i<TOTAL_DATA; i++){
+        int min_age = jsonData[i]["min_umur"];
+        int max_age = jsonData[i]["max_umur"];
+        string range_umur;
+
+        range_umur = to_string(jsonData[i]["min_umur"])+" - "+to_string(jsonData[i]["max_umur"]);
+
+        if (min_age >= 60)
+            range_umur = "60 +";
+
+        arrData.push_back({
+            range_umur,
+            to_string(jsonData[i]["bekerja"]), 
+            to_string(jsonData[i]["pengangguran"]), 
+            to_string(jsonData[i]["angkatan_kerja"]), 
+            to_string(jsonData[i]["bekerja_ak"])+"%"
+        });
+    }
+
+    createTable(header, arrData, arrData.size());
+}
+
+void showMenu(){
+    cout << endl;
+    cout << "Angkatan Kerja Di Indonesia" << endl;
+    cout << "1. Tampilkan Data" << endl;
+    cout << "2. Tampilkan Golongan Umur Berdasarkan \% Bekerja per AK" << endl;
+    cout << "3. Urutkan Data Berdasarkan AK" << endl;
+    cout << "4. Tampilkan Data Sesuai Umur" << endl;
+    cout << "5. Keluar Aplikasi" << endl;
+    cout << "Pilih menu (sesuai nomor di atas) : ";
+    cin >> choice;
+    cout << endl;
+}
+
 int main() {
+    loadData();
+    system("CLS");
+    showMenu();
+
+    while(true){
+        system("CLS");
+        switch (choice)
+        {
+            case 1:
+                showAllData();
+                break;
+            case 2:
+                showAgeByAK();
+                break;
+            case 3:
+                sortDataByAK();
+                break;
+            case 4:
+                showDataByAge();
+                break;
+            case 5:
+                exit(0);
+                break;
+            default:
+                break;
+        }
+        showMenu();
+    }
 }
 
 
